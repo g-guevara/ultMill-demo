@@ -55,7 +55,7 @@ export default function HomeScreen() {
 
   // Datos de ejemplo para productos
   const products: Product[] = [
-    { id: "1", name: "AirPods", price: 132.00, rating: 4.9, backgroundColor: "#F1F1F1" },
+    { id: "1", name: "AirPods", price: 132.00, rating: 4.9, backgroundColor: "#e0ccff" },
     { id: "2", name: "MacBook Air 13", price: 1100.00, rating: 5.0, backgroundColor: "#FFE4E1" },
     { id: "3", name: "Gaming Mouse", price: 45.99, rating: 4.7, backgroundColor: "#98FB98" },
     { id: "4", name: "iPhone 14 Pro", price: 999.00, rating: 4.8, backgroundColor: "#E6E6FA" }
@@ -103,6 +103,13 @@ export default function HomeScreen() {
       </Text>
     </TouchableOpacity>
   );
+
+  const handleProductPress = (product: Product) => {
+    router.push({
+      pathname: "/screens/ProductDetailiScreen",
+      params: { productData: JSON.stringify(product) }
+    });
+  };
 
   return (
     <SafeAreaView style={styles.container}>
@@ -155,11 +162,15 @@ export default function HomeScreen() {
 
         {/* Products Grid */}
         <View style={styles.productsGrid}>
-          {products.map((product, index) => (
-            <View key={product.id} style={[
-              styles.productItem, 
-              { backgroundColor: product.backgroundColor }
-            ]}>
+          {products.map((product) => (
+            <TouchableOpacity 
+              key={product.id} 
+              style={[
+                styles.productItem, 
+                { backgroundColor: product.backgroundColor }
+              ]}
+              onPress={() => handleProductPress(product)}
+            >
               <View style={styles.productInfo}>
                 <Text style={styles.productName}>{product.name}</Text>
                 <Text style={styles.productPrice}>${product.price.toFixed(2)}</Text>
@@ -168,7 +179,7 @@ export default function HomeScreen() {
                   <Text style={styles.ratingText}>{product.rating}</Text>
                 </View>
               </View>
-            </View>
+            </TouchableOpacity>
           ))}
         </View>
       </ScrollView>
