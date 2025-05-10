@@ -109,20 +109,13 @@ export default function HomeScreen() {
       {/* Header */}
       <View style={styles.header}>
         <Text style={styles.headerTitle}>Discover</Text>
-        <View style={styles.headerIcons}>
-          <TouchableOpacity style={styles.iconButton}>
-            <Text style={styles.iconText}>🔔</Text>
-            <View style={styles.notificationBadge}>
-              <Text style={styles.notificationText}>2</Text>
-            </View>
-          </TouchableOpacity>
-        </View>
+
       </View>
 
       <ScrollView showsVerticalScrollIndicator={false}>
         {/* Search Bar */}
         <View style={styles.searchContainer}>
-          <Text style={styles.searchIcon}>🔍</Text>
+          <Text style={styles.searchIcon}></Text>
           <TextInput
             style={styles.searchInput}
             placeholder="Search"
@@ -181,24 +174,7 @@ export default function HomeScreen() {
       </ScrollView>
 
       {/* Bottom Navigation */}
-      <View style={styles.bottomNav}>
-        <TouchableOpacity style={styles.navItem}>
-          <Text style={styles.navIcon}>🏠</Text>
-          <Text style={[styles.navText, styles.activeNavText]}>Home</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.navItem}>
-          <Text style={styles.navIcon}>🔍</Text>
-          <Text style={styles.navText}>Search</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.navItem}>
-          <Text style={styles.navIcon}>❤️</Text>
-          <Text style={styles.navText}>Favorites</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.navItem} onPress={handleLogout}>
-          <Text style={styles.navIcon}>👤</Text>
-          <Text style={styles.navText}>Profile</Text>
-        </TouchableOpacity>
-      </View>
+
     </SafeAreaView>
   );
 }
